@@ -1,0 +1,11 @@
+# Maven build output
+target/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.iml
+
+# Assignment handout (do not commit)
+*.docx
