@@ -1,5 +1,7 @@
 package mn.edu.must.sqat;
 
+import java.math.BigDecimal;
+
 /**
  * Оюутны нийлбэр онооноос үсгэн дүн тооцно (F.CSA313-ийн үнэлгээний бүтэц).
  */
@@ -39,7 +41,14 @@ public class GradeCalculator {
         requireInRange("quiz2", quiz2, MAX_QUIZ);
         requireInRange("exam", exam, MAX_EXAM);
 
-        return att + lab + quiz1 + quiz2 + exam;
+        // double-ийг шууд нэмбэл 9.3 + 35.3 + 8.3 + 8.9 + 28.2 = 89.99999999999999
+        // болж, яг 90 оноотой оюутан B авна. Аравтын бутархайгаар (BigDecimal) нэмнэ.
+        return BigDecimal.valueOf(att)
+                .add(BigDecimal.valueOf(lab))
+                .add(BigDecimal.valueOf(quiz1))
+                .add(BigDecimal.valueOf(quiz2))
+                .add(BigDecimal.valueOf(exam))
+                .doubleValue();
     }
 
     // NaN-ийг тусад нь шалгана: NaN < 0 ч, NaN > max ч false тул энгийн
